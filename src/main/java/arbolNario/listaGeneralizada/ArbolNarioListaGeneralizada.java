@@ -36,9 +36,6 @@ import javax.swing.JOptionPane;
 public class ArbolNarioListaGeneralizada {
 
     NodoNario raiz = new NodoNario(null);
-    // Variables globales para identificar acciones
-    final static boolean TRANSFORMAR = true;
-    final static boolean NOTRANSFORMAR = false;
 
     /**
      * Otro constructor
@@ -52,72 +49,146 @@ public class ArbolNarioListaGeneralizada {
     public ArbolNarioListaGeneralizada() {
     }
     
-    public void insertarDatoNivel1(int celContacto){
-        NodoNario recorrido = raiz.getLiga();
-        NodoNario dato = new NodoNario(celContacto);
-        dato.setSw(0);
-        if()
-        //Se recorre el primer nivel del árbol Nario y se inserta el nuevo contacto al final de la lista
-        while(true){
-            if(recorrido.getLiga() == null){
-                recorrido.setLiga(dato);
-                break;
+    //prueba de que los algoritmos funcionan correctamente
+    public static void main(String[] args) {
+        ArbolNarioListaGeneralizada a = new ArbolNarioListaGeneralizada();
+        NodoNario x = new NodoNario(2);
+        x.setSw(0);
+        NodoNario p = new NodoNario(1);
+        p.setSw(0);
+        p.setLiga(x);
+        NodoNario p1 = new NodoNario(p);
+        p1.setSw(1);
+        a.raiz.setLiga(p1);
+        a.insertarDato(1, 3, 4);
+        a.insertarDato(2, 1, 5);
+        a.insertarDato(2, 1, 6);
+        a.insertarDato(3, 6, 7);
+        System.out.println(a.buscarNivel(7));
+    }
+    
+    public void insertarDato(int nivel, int celContactoRaiz, int celContacto){
+        switch (nivel) {
+            case 1 -> insertarDatoNivel1(celContactoRaiz, celContacto);
+            case 2 ->                 {
+                    int checkNivel = buscarNivel(celContactoRaiz);
+                    if(checkNivel == 0){
+                        JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en la base de datos.");
+                    }else if(checkNivel != 1){
+                        JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en el nivel 2.");
+                    }else{
+                        NodoNario contRaiz = buscarRaiz(celContactoRaiz);
+                        NodoNario recorrido = contRaiz.getLiga();
+                        NodoNario nuevoCont = new NodoNario(celContacto);
+                        nuevoCont.setSw(0);
+                        while(true){
+                            if(recorrido.getLiga() == null){
+                                recorrido.setLiga(nuevoCont);
+                                break;
+                            }
+                            recorrido = recorrido.getLiga();
+                        }
+                    } 
+                    }                      
+            case 3 ->                 {
+                    int checkNivel = buscarNivel(celContactoRaiz);
+                    if(checkNivel == 0){
+                        JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en la base de datos.");
+                    }else if(checkNivel != 2){
+                        JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en el nivel 3.");
+                    }else{
+                        NodoNario contRaiz = buscarRaiz(celContactoRaiz);
+                        if(contRaiz.getSw() == 0){
+                            NodoNario a = new NodoNario(celContacto);
+                            a.setSw(0);
+                            NodoNario b = new NodoNario(celContactoRaiz);
+                            b.setSw(0);
+                            b.setLiga(a);
+                            contRaiz.setDato(b);
+                            contRaiz.setSw(1);
+                        }else{
+                            NodoNario recorrido = contRaiz.getLiga();
+                            NodoNario nuevoCont = new NodoNario(celContacto);
+                            nuevoCont.setSw(0);
+                            while(true){
+                                if(recorrido.getLiga() == null){
+                                    recorrido.setLiga(nuevoCont);
+                                    break;
+                                }
+                                recorrido = recorrido.getLiga();
+                            }
+                        }
+                    }                      }
+            default -> {
             }
-            recorrido = recorrido.getLiga();
         }
     }
     
-    
-    public void insertarDatoNivel2(int celContacto1, int celContacto2){
+    public NodoNario buscarRaiz(int contactoRaiz){
+        Stack stack = new Stack();
         NodoNario recorrido = raiz.getLiga();
-        NodoNario dato = new NodoNario(celContacto2);
-        dato.setSw(0);
-        boolean encontrado = false;
-        
+        //NodoNario padreRaiz;
         while(recorrido != null){
-            if(recorrido.getSw() == 0){
-                if((int)recorrido.getDato() == celContacto1){
-                    insertarDato(recorrido, celContacto2, TRANSFORMAR);
-                    encontrado = true;
-                    break;
+            if(recorrido.getSw() == 1){
+                stack.push(recorrido);
+                recorrido = (NodoNario)recorrido.getDato();
+                if((int)recorrido.getDato() == contactoRaiz){
+                    return recorrido;
                 }
-            }else if(recorrido.getSw() == 1){
-                //int aux =(int)((NodoNario)recorrido.getDato()).getDato();
-                if((int)((NodoNario)recorrido.getDato()).getDato() == celContacto1){
-                  insertarDato((NodoNario)recorrido.getDato(),celContacto2,NOTRANSFORMAR); 
-                  encontrado = true;
-                  break;
-                }
+            }else if((int)recorrido.getDato() == contactoRaiz){
+                return recorrido;
+            } 
+            if(recorrido.getLiga() == null && !stack.isEmpty()){
+                recorrido = (NodoNario)stack.pop();
             }
             recorrido = recorrido.getLiga();
         }
         
-        if(!encontrado){
-            JOptionPane.showMessageDialog(null, "El contacto " + celContacto1 + " no se encuentra en la base de datos.");
-            //System.out.println("El contacto " + celContacto1 + " no se encuentra en la base de datos.");
-        }
-        
-    } 
+        return null;
+    }
     
-    public void insertarDato(NodoNario subRaiz, int celContacto, boolean TRANSFORMAR){
-        NodoNario recorrido = subRaiz.getLiga();
+    public int buscarNivel(int celContacto){
+        Stack stack = new Stack();
+        NodoNario recorrido = raiz.getLiga();
+        int nivel = 1;
+        //NodoNario padreRaiz;
+        while(recorrido != null){
+            if(recorrido.getSw() == 1){
+                stack.push(recorrido);
+                recorrido = (NodoNario)recorrido.getDato();
+                if((int)recorrido.getDato() == celContacto){
+                    return nivel;
+                }
+                nivel++;
+            }else if((int)recorrido.getDato() == celContacto){
+                return nivel;
+            } 
+            if(recorrido.getLiga() == null && !stack.isEmpty()){
+                recorrido = (NodoNario)stack.pop();
+                nivel--;
+            }
+            recorrido = recorrido.getLiga();
+        }
+        nivel = 0;
+        return nivel;
+    }
+    
+    public void insertarDatoNivel1(int celContacto, int hijoContacto){
+        NodoNario recorrido = raiz.getLiga();
         NodoNario dato = new NodoNario(celContacto);
         dato.setSw(0);
-        
-        //Caso en que la raiz no tiene contactos relacionados aún
-        if(TRANSFORMAR){
-            NodoNario nuevaRaiz = subRaiz;
-            subRaiz.setSw(1);
-            subRaiz.setLiga(nuevaRaiz);
-            nuevaRaiz.setLiga(dato);
-        }else{//Caso en el que la raíz ya cuenta con al menos un contacto 
-            while(true){
+        NodoNario hijoDato = new NodoNario(hijoContacto);
+        hijoDato.setSw(0);
+        dato.setLiga(hijoDato);
+        NodoNario x = new NodoNario(dato);
+        x.setSw(1);
+        //Se recorre el primer nivel del árbol Nario y se inserta el nuevo contacto al final de la lista
+        while(true){
             if(recorrido.getLiga() == null){
-                recorrido.setLiga(dato);
+                recorrido.setLiga(x);
                 break;
             }
             recorrido = recorrido.getLiga();
-        }
         }
     }
 
