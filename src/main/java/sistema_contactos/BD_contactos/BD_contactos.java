@@ -23,6 +23,7 @@ public class BD_contactos {
         Scanner scan = new Scanner(data);
         if(scan.hasNextLine()){
             while(scan.hasNextLine()){
+                //Arreglar esto
                 String[] info_contacto = scan.nextLine().split(":");
                 Contacto contacto = new Contacto(Integer.parseInt(info_contacto[0]),info_contacto[1]);
                 contactos.insertarDato(contacto);

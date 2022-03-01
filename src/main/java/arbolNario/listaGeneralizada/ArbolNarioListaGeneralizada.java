@@ -11,7 +11,7 @@ public class ArbolNarioListaGeneralizada {
 
     NodoNario raiz = new NodoNario(null);
 
-    public ArbolNarioListaGeneralizada() {
+    public ArbolNarioListaGeneralizada(){
     }
     
     //prueba de que los algoritmos funcionan correctamente
