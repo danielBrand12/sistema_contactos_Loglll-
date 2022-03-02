@@ -30,6 +30,7 @@ public class ArbolNarioListaGeneralizada {
             case 1 -> insertarDatoNivel1(celContactoRaiz, celContacto);
             case 2 -> insertarDatoNivel2(celContactoRaiz,celContacto);                      
             case 3 -> insertarDatoNivel3(celContactoRaiz, celContacto);
+            case 4 -> insertarDatoNivel4(celContactoRaiz, celContacto);
             default -> {    
             }
         }
@@ -135,6 +136,36 @@ public class ArbolNarioListaGeneralizada {
             JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en la base de datos.");
         }else if(checkNivel != 2){
             JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en el nivel 2.");
+        }else{
+            NodoNario contRaiz = buscarRaiz(celContactoRaiz);
+            if(contRaiz.getSw() == 0){
+                NodoNario a = new NodoNario(celContacto);
+                a.setSw(0);
+                NodoNario b = new NodoNario(celContactoRaiz);
+                b.setSw(0);
+                b.setLiga(a);
+                contRaiz.setDato(b);
+                contRaiz.setSw(1);
+            }else{
+                NodoNario recorrido = contRaiz.getLiga();
+                NodoNario nuevoCont = new NodoNario(celContacto);
+                nuevoCont.setSw(0);
+                while(true){
+                    if(recorrido.getLiga() == null){
+                        recorrido.setLiga(nuevoCont);
+                        break;
+                    }
+                    recorrido = recorrido.getLiga();
+                }
+            }
+        }
+    }
+    public void insertarDatoNivel4(int celContactoRaiz, int celContacto){
+        int checkNivel = buscarNivel(celContactoRaiz);
+        if(checkNivel == 0){
+            JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en la base de datos.");
+        }else if(checkNivel != 3){
+            JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en el nivel 3.");
         }else{
             NodoNario contRaiz = buscarRaiz(celContactoRaiz);
             if(contRaiz.getSw() == 0){
