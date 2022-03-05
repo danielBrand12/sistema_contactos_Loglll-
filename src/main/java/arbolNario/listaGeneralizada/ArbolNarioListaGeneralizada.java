@@ -28,9 +28,9 @@ public class ArbolNarioListaGeneralizada {
     public void insertarDato(int nivel, int celContactoRaiz, int celContacto){
         switch (nivel) {
             case 1 -> insertarDatoNivel1(celContactoRaiz, celContacto);
-            case 2 -> insertarDatoNivel2(celContactoRaiz,celContacto);                      
+            case 2 -> insertarDatoNivel2(celContactoRaiz, celContacto);                      
             case 3 -> insertarDatoNivel3(celContactoRaiz, celContacto);
-            case 4 -> insertarDatoNivel4(celContactoRaiz, celContacto);
+            case 4 -> insertarDatoNivel4(celContactoRaiz, celContacto); 
             default -> {    
             }
         }

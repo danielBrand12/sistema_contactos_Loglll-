@@ -21,7 +21,7 @@ public class BD_identificador {
     */
     public BD_identificador() throws FileNotFoundException, IOException{
         identificador = new ArbolAVL();
-        File data = new File("contactos.txt");
+        File data = new File("identificador.txt");
         Scanner scan = new Scanner(data);
         if(scan.hasNextLine()){
             while(scan.hasNextLine()){
@@ -36,7 +36,7 @@ public class BD_identificador {
     public void agregarContacto(Contacto c) throws IOException{
         if("Contacto no encontrado.".equals(buscarContacto(c.getCelular()))){
             identificador.insertarDato(c);
-            FileWriter file =  new FileWriter("contactos.txt", true);
+            FileWriter file =  new FileWriter("identificador.txt", true);
             BufferedWriter b = new BufferedWriter(file);
             b.write(c.getCelular()+":"+c.getNombre());
             b.newLine();

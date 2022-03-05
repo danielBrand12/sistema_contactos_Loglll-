@@ -16,10 +16,12 @@ import javax.swing.JOptionPane;
  * @author daniel
  */
 public class BD_contactos {
+    
     ArbolNarioListaGeneralizada contactos;
+    
     public BD_contactos() throws FileNotFoundException{
         contactos = new ArbolNarioListaGeneralizada();
-        File data = new File("/home/daniel/Descargas/contactos");
+        File data = new File("contactos.txt");
         Scanner scan = new Scanner(data);
         if(scan.hasNextLine()){
             while(scan.hasNextLine()){
@@ -29,5 +31,8 @@ public class BD_contactos {
                 contactos.insertarDato(contacto);
             }
         }
+    }
+    public void guardarDatos(){
+        
     }
 }
