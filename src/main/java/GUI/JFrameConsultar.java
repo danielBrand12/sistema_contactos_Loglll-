@@ -114,8 +114,8 @@ public class JFrameConsultar extends javax.swing.JFrame {
 
     private void botonVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerActionPerformed
         if(numero.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "No ha ingresado ningun numero");
             //ventana que muestre un mensaje diciendo que no ha ingresado ningun numero
+            JOptionPane.showMessageDialog(null, "No ha ingresado ningun numero");
         } else {
             // mostrar en elJTextArea llamado "lista" la lista de contactos de "numero"
         }

@@ -179,7 +179,7 @@ public class JFrameIngresar extends javax.swing.JFrame {
                                     .addComponent(numeroNivel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addContainerGap()))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(41, 41, 41)
@@ -191,7 +191,7 @@ public class JFrameIngresar extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(numeroHijo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(20, 20, 20)
@@ -211,13 +211,14 @@ public class JFrameIngresar extends javax.swing.JFrame {
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(nombreOtroNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(numeroOtroNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jButton1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(botonIngresar234)
-                                                .addGap(78, 78, 78)))
-                                        .addGap(123, 123, 123)))
+                                                            .addComponent(numeroOtroNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGap(123, 123, 123))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(botonIngresar234)
+                                        .addGap(16, 16, 16)))
                                 .addGap(81, 81, 81))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(botonIngresarN1)
@@ -246,35 +247,31 @@ public class JFrameIngresar extends javax.swing.JFrame {
                     .addComponent(nombreHijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(numeroHijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(botonIngresarN1)
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(nivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(numeroPadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(nombreOtroNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(numeroOtroNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(botonIngresar234)
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addContainerGap())))
+                .addGap(18, 18, 18)
+                .addComponent(botonIngresarN1)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(nivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(numeroPadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(nombreOtroNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(numeroOtroNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonIngresar234)
+                    .addComponent(jButton1))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -305,10 +302,17 @@ public class JFrameIngresar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Se deben llenar todos los campos");
         } else {
             //ingresar contacto en el nivel 1
-            int b= Integer.parseInt(numeroNivel1.getText());
-            Contacto c = new Contacto(b,nombreNivel1.getText());
+            int a = Integer.parseInt(numeroNivel1.getText());
+            int b = Integer.parseInt(numeroHijo.getText());
+            Contacto c = new Contacto(a,nombreNivel1.getText());
+            Contacto d = new Contacto(b, nombreHijo.getText());
                 try {
                     identificador.agregarContacto(c);
+                    identificador.agregarContacto(d);
+                    numeroNivel1.setText(null);
+                    numeroHijo.setText(null);
+                    nombreNivel1.setText(null);
+                    nombreHijo.setText(null);
                 } catch (IOException ex) {
                     Logger.getLogger(JFrameIngresar.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -323,33 +327,21 @@ public class JFrameIngresar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Solo puede ingresar en los niveles 2,3 o 4");
         } else {
             if (nivel.getText().equals("")|| numeroPadre.getText().equals("")|| nombreOtroNivel.getText().equals("")|| numeroOtroNivel.getText().equals("")){
-            //ventana que muestre un mensaje diciendo que se debe llenar todos los campos
-            JOptionPane.showMessageDialog(null,"Debe llenar todos los campos");
+                //ventana que muestre un mensaje diciendo que se debe llenar todos los campos
+                JOptionPane.showMessageDialog(null,"Debe llenar todos los campos");
             } else {
-            //ingresar el contacto en el nivel correspondiente (2,3 o 4)
-            int b= Integer.parseInt(numeroOtroNivel.getText());
-            Contacto c = new Contacto(b,nombreOtroNivel.getText());
+                //ingresar el contacto en el nivel correspondiente (2,3 o 4)
+                int a = Integer.parseInt(numeroOtroNivel.getText());
+                Contacto c = new Contacto(a,nombreOtroNivel.getText());
                 try {
                     identificador.agregarContacto(c);
+                    nivel.setText(null);
+                    numeroPadre.setText(null);
+                    numeroOtroNivel.setText(null);
+                    nombreOtroNivel.setText(null);
                 } catch (IOException ex) {
                     Logger.getLogger(JFrameIngresar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            
-            
-            
-           
-        
-           
-        
-        
-        
-        
-       
-        
-        
-       
-            
-            
             }
         }
     }//GEN-LAST:event_botonIngresar234ActionPerformed

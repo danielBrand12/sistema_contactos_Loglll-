@@ -36,6 +36,6 @@ public class BD_contactos {
     }
     
     public void ingresarDato(int nivel, int celRaiz, int cel){
-        contactos.insertarDato(nivel, celRaiz, celRaiz);
+        contactos.insertarDato(nivel, celRaiz, cel);
     }
 }
