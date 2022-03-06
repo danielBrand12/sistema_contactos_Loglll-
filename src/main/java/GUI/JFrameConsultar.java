@@ -4,6 +4,11 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+import arbol.binario.listaligada.busqueda.avl.ArbolAVL;
+import sistema_contactos.contacto.Contacto;
+import sistema_contactos.BD_identificador.BD_identificador;
+import sistema_contactos.contacto.Contacto;
 /**
  *
  * @author cami0
@@ -32,6 +37,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lista = new javax.swing.JTextArea();
         botonVer = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +62,13 @@ public class JFrameConsultar extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Volver al menu principal");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,7 +76,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
@@ -71,7 +84,8 @@ public class JFrameConsultar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonVer)))
+                        .addComponent(botonVer))
+                    .addComponent(jButton1))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -84,9 +98,11 @@ public class JFrameConsultar extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonVer))
-                .addGap(53, 53, 53)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,11 +114,20 @@ public class JFrameConsultar extends javax.swing.JFrame {
 
     private void botonVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerActionPerformed
         if(numero.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "No ha ingresado ningun numero");
             //ventana que muestre un mensaje diciendo que no ha ingresado ningun numero
         } else {
             // mostrar en elJTextArea llamado "lista" la lista de contactos de "numero"
         }
     }//GEN-LAST:event_botonVerActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFramePrincipal ventanaPrincipal = new JFramePrincipal();
+        ventanaPrincipal.setVisible(true);
+        dispose();
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +166,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonVer;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

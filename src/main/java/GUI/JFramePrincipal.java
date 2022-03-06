@@ -6,14 +6,16 @@ package GUI;
 
 import arbolNario.listaGeneralizada.ArbolNarioListaGeneralizada;
 import arbol.binario.listaligada.busqueda.avl.ArbolAVL;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author cami0
  */
 public class JFramePrincipal extends javax.swing.JFrame {
 
-    ArbolNarioListaGeneralizada arbolNario = new ArbolNarioListaGeneralizada();
-    ArbolAVL arbolAVL = new ArbolAVL();
+   
     /**
      * Creates new form JFrame
      */
@@ -96,11 +98,21 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         JFrameConsultar ventanaConsulta = new JFrameConsultar();
         ventanaConsulta.setVisible(true);
+        
+        dispose();
+        
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     private void jButtonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarActionPerformed
-        JFrameIngresar ventanaIngreso = new JFrameIngresar();
-        ventanaIngreso.setVisible(true);
+        
+        try {
+            JFrameIngresar ventanaIngreso = new JFrameIngresar();
+            ventanaIngreso.setVisible(true);
+            dispose();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonIngresarActionPerformed
 
     /**
