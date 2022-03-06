@@ -17,12 +17,44 @@ public class ArbolNarioListaGeneralizada {
     //prueba de que los algoritmos funcionan correctamente
     public static void main(String[] args) {
         ArbolNarioListaGeneralizada a = new ArbolNarioListaGeneralizada();
-        a.insertarDato(1, 1, 2);
-        a.insertarDato(1, 3, 4);
-        a.insertarDato(2, 1, 5);
-        a.insertarDato(2, 1, 6);
-        a.insertarDato(3, 6, 7);
-        System.out.println(a.buscarNivel(7));
+        a.insertarDato(1, 3, 2);
+        a.insertarDato(1, 1, 4);
+        a.insertarDato(1, 8, 9);
+        a.insertarDato(1,11 ,12);
+        a.insertarDato(3, 12, 7);
+        a.insertarDato(3, 12, 15);
+        a.insertarDato(4, 7, 20);
+        a.insertarDato(4, 7, 21);
+        a.insertarDato(4, 15, 22);
+        a.insertarDato(2, 11, 13);
+        //a.insertarDato(2, 8, 10);
+        //a.insertarDato(3, 2, 13);
+        //System.out.println(a.buscarNivel(5));
+        //System.out.println(a.buscarRaiz(5));
+        a.prueba();
+    }
+    
+    public void prueba(){
+      Stack stack = new Stack();
+        NodoNario recorrido = raiz.getLiga();
+        int nivel = 1;
+        //NodoNario padreRaiz;
+        while(recorrido != null){
+            if(recorrido.getSw() == 0){
+                System.out.println("Nodo:" + recorrido.getDato() + " nivel " + nivel);
+            }
+            if(recorrido.getSw() == 1){
+                stack.push(recorrido);
+                recorrido = (NodoNario)recorrido.getDato();
+                System.out.println("Nodo:" + recorrido.getDato() + " nivel " + nivel);
+                nivel++;
+            }
+            if(recorrido.getLiga() == null && !stack.isEmpty()){
+                recorrido = (NodoNario)stack.pop();
+                nivel--;
+            }
+            recorrido = recorrido.getLiga();
+        }
     }
     
     public void insertarDato(int nivel, int celContactoRaiz, int celContacto){
@@ -59,6 +91,29 @@ public class ArbolNarioListaGeneralizada {
         return null;
     }
     
+    public NodoNario buscarRaizMod(int contactoRaiz){
+        Stack stack = new Stack();
+        NodoNario recorrido = raiz.getLiga();
+        //NodoNario padreRaiz;
+        while(recorrido != null){
+            if(recorrido.getSw() == 1){
+                stack.push(recorrido);
+                recorrido = (NodoNario)recorrido.getDato();
+                if((int)recorrido.getDato() == contactoRaiz){
+                    return (NodoNario)stack.pop();
+                }
+            }else if((int)recorrido.getDato() == contactoRaiz){
+                return recorrido;
+            } 
+            if(recorrido.getLiga() == null && !stack.isEmpty()){
+                recorrido = (NodoNario)stack.pop();
+            }
+            recorrido = recorrido.getLiga();
+        }
+        
+        return null;
+    }
+    
     public int buscarNivel(int celContacto){
         Stack stack = new Stack();
         NodoNario recorrido = raiz.getLiga();
@@ -72,7 +127,7 @@ public class ArbolNarioListaGeneralizada {
                     return nivel;
                 }
                 nivel++;
-            }else if((int)recorrido.getDato() == celContacto){
+            }else if((int)recorrido.getDato() == celContacto && recorrido.getSw() == 0){
                 return nivel;
             } 
             if(recorrido.getLiga() == null && !stack.isEmpty()){
@@ -137,7 +192,7 @@ public class ArbolNarioListaGeneralizada {
         }else if(checkNivel != 2){
             JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en el nivel 2.");
         }else{
-            NodoNario contRaiz = buscarRaiz(celContactoRaiz);
+            NodoNario contRaiz = buscarRaizMod(celContactoRaiz);
             if(contRaiz.getSw() == 0){
                 NodoNario a = new NodoNario(celContacto);
                 a.setSw(0);
@@ -147,7 +202,7 @@ public class ArbolNarioListaGeneralizada {
                 contRaiz.setDato(b);
                 contRaiz.setSw(1);
             }else{
-                NodoNario recorrido = contRaiz.getLiga();
+                NodoNario recorrido = ((NodoNario)contRaiz.getDato()).getLiga();
                 NodoNario nuevoCont = new NodoNario(celContacto);
                 nuevoCont.setSw(0);
                 while(true){
@@ -167,7 +222,7 @@ public class ArbolNarioListaGeneralizada {
         }else if(checkNivel != 3){
             JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en el nivel 3.");
         }else{
-            NodoNario contRaiz = buscarRaiz(celContactoRaiz);
+            NodoNario contRaiz = buscarRaizMod(celContactoRaiz);
             if(contRaiz.getSw() == 0){
                 NodoNario a = new NodoNario(celContacto);
                 a.setSw(0);
@@ -177,7 +232,7 @@ public class ArbolNarioListaGeneralizada {
                 contRaiz.setDato(b);
                 contRaiz.setSw(1);
             }else{
-                NodoNario recorrido = contRaiz.getLiga();
+                NodoNario recorrido = ((NodoNario)contRaiz.getDato()).getLiga();
                 NodoNario nuevoCont = new NodoNario(celContacto);
                 nuevoCont.setSw(0);
                 while(true){
