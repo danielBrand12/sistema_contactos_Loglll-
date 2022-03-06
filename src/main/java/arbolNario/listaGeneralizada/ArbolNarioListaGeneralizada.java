@@ -32,6 +32,7 @@ public class ArbolNarioListaGeneralizada {
         //System.out.println(a.buscarNivel(5));
         //System.out.println(a.buscarRaiz(5));
         a.prueba();
+        
     }
     
     public void prueba(){

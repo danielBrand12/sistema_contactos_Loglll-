@@ -34,6 +34,7 @@ public class BD_contactos {
         }
     }
     public static void guardarDatos(ArbolNarioListaGeneralizada a){
+        
          System.out.println(System.getProperty("user.dir"));
          Stack stack = new Stack();
         NodoNario recorrido = a.getRaiz().getLiga();
