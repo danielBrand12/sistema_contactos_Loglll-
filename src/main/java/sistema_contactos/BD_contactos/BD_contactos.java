@@ -19,25 +19,35 @@ import javax.swing.JOptionPane;
  */
 public class BD_contactos {
     
-    ArbolNarioListaGeneralizada contactos;
+    public ArbolNarioListaGeneralizada contactos;
     
     public BD_contactos() throws FileNotFoundException{
         contactos = new ArbolNarioListaGeneralizada();
         File data = new File("contactos.txt");
         Scanner scan = new Scanner(data);
         if(scan.hasNextLine()){
+            int bandera = 0;
             while(scan.hasNextLine()){
-                //Arreglar esto
                 String[] info_contacto = scan.nextLine().split(":");
-                Contacto contacto = new Contacto(Integer.parseInt(info_contacto[0]),info_contacto[1]);
+                if(Integer.parseInt(info_contacto[0]) == 1){
+                    if(bandera != Integer.parseInt(info_contacto[1])){
+                        bandera = Integer.parseInt(info_contacto[1]);
+                        contactos.insertarDato(Integer.parseInt(info_contacto[0]), Integer.parseInt(info_contacto[1]), Integer.parseInt(info_contacto[2]));
+                    }else{
+                        contactos.insertarDato(Integer.parseInt(info_contacto[0]) + 1, Integer.parseInt(info_contacto[1]), Integer.parseInt(info_contacto[2]));
+                    }
+                }else{
+                    contactos.insertarDato(Integer.parseInt(info_contacto[0]) + 1, Integer.parseInt(info_contacto[1]), Integer.parseInt(info_contacto[2]));
+                }
             }
         }
     }
-    public static void guardarDatos(ArbolNarioListaGeneralizada a){
+    
+    public void guardarDatos(){
         
-         System.out.println(System.getProperty("user.dir"));
-         Stack stack = new Stack();
-        NodoNario recorrido = a.getRaiz().getLiga();
+        System.out.println(System.getProperty("user.dir"));
+        Stack stack = new Stack();
+        NodoNario recorrido = contactos.getRaiz().getLiga();
         StringBuilder str = new StringBuilder();
         
         while(recorrido != null){
@@ -48,7 +58,7 @@ public class BD_contactos {
             } 
             
             // Buscamos los padres de los nodos, para ello empezamos por descartar los nodos de nivel 1, pues a estos no se les asigna uno.
-            if(a.buscarNivel((int)recorrido.getDato()) != 1) {
+            if(contactos.buscarNivel((int)recorrido.getDato()) != 1) {
                     
                 // Obtenemos el último nodo guardado en el stack 
                 NodoNario nodoAnterior = (NodoNario)stack.peek();
@@ -66,7 +76,7 @@ public class BD_contactos {
                     stack.push(nodoTemporal);
                         
                     // Añadimos los datos al stringBuilder
-                    str.append(a.buscarNivel((int)padre.getDato()));
+                    str.append(contactos.buscarNivel((int)padre.getDato()));
                     str.append(":");
                     str.append(padre.getDato());
                     str.append(":");
@@ -80,7 +90,7 @@ public class BD_contactos {
                     NodoNario padre = (NodoNario)x.getDato();
                         
                     // Añadimos los datos al stringBuilder
-                    str.append(a.buscarNivel((int)padre.getDato()));
+                    str.append(contactos.buscarNivel((int)padre.getDato()));
                     str.append(":");
                     str.append(padre.getDato());
                     str.append(":");
@@ -99,7 +109,7 @@ public class BD_contactos {
   
         // Escribimos en el txt
         try {
-            FileWriter myWriter = new FileWriter(System.getProperty("user.dir") + "/src/main/java/BD_contactos.txt");
+            FileWriter myWriter = new FileWriter(System.getProperty("user.dir") + "contactos.txt");
             myWriter.write(str.toString());
             myWriter.close();
         } catch (IOException e) {

@@ -1,4 +1,5 @@
 /*
+0
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -25,9 +26,9 @@ import sistema_contactos.BD_identificador.BD_identificador;
  */
 public class JFrameIngresar extends javax.swing.JFrame {
 
-    BD_identificador identificador;
+    //BD_identificador identificador;
     public JFrameIngresar() throws IOException {
-        this.identificador = new BD_identificador();
+        //this.identificador = new BD_identificador();
         initComponents();
     }
 
@@ -307,8 +308,10 @@ public class JFrameIngresar extends javax.swing.JFrame {
             Contacto c = new Contacto(a,nombreNivel1.getText());
             Contacto d = new Contacto(b, nombreHijo.getText());
                 try {
-                    identificador.agregarContacto(c);
-                    identificador.agregarContacto(d);
+                    JFramePrincipal.identificador.agregarContacto(c);
+                    JFramePrincipal.identificador.agregarContacto(d);
+                    JFramePrincipal.contactos.ingresarDato(1, a, b);
+                    //JFramePrincipal.contactos.contactos.prueba();
                     numeroNivel1.setText(null);
                     numeroHijo.setText(null);
                     nombreNivel1.setText(null);
@@ -332,9 +335,12 @@ public class JFrameIngresar extends javax.swing.JFrame {
             } else {
                 //ingresar el contacto en el nivel correspondiente (2,3 o 4)
                 int a = Integer.parseInt(numeroOtroNivel.getText());
+                int b = Integer.parseInt(numeroPadre.getText());
+                int n = Integer.parseInt(nivel.getText());
                 Contacto c = new Contacto(a,nombreOtroNivel.getText());
                 try {
-                    identificador.agregarContacto(c);
+                    JFramePrincipal.identificador.agregarContacto(c);
+                    JFramePrincipal.contactos.ingresarDato(n, b, a);
                     nivel.setText(null);
                     numeroPadre.setText(null);
                     numeroOtroNivel.setText(null);
@@ -347,8 +353,13 @@ public class JFrameIngresar extends javax.swing.JFrame {
     }//GEN-LAST:event_botonIngresar234ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFramePrincipal ventanaPrincipal = new JFramePrincipal();
-        ventanaPrincipal.setVisible(true);
+        JFramePrincipal ventanaPrincipal;
+        try {
+            ventanaPrincipal = new JFramePrincipal();
+            ventanaPrincipal.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(JFrameIngresar.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

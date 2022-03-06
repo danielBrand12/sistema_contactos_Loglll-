@@ -9,18 +9,25 @@ import arbol.binario.listaligada.busqueda.avl.ArbolAVL;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import sistema_contactos.BD_contactos.BD_contactos;
+import sistema_contactos.BD_identificador.BD_identificador;
+import sistema_contactos.contacto.Contacto;
 /**
  *
  * @author cami0
  */
 public class JFramePrincipal extends javax.swing.JFrame {
 
-   
+     static BD_identificador identificador;
+     static BD_contactos contactos;
     /**
      * Creates new form JFrame
      */
-    public JFramePrincipal() {
+    public JFramePrincipal() throws IOException {
         initComponents();
+        identificador = new BD_identificador();
+        contactos = new BD_contactos();
     }
 
     /**
@@ -36,6 +43,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jButtonIngresar = new javax.swing.JButton();
         jButtonConsultar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        agregarIden = new javax.swing.JButton();
+        guardarBD = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +66,25 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jLabel1.setText("BIENVENIDO");
 
+        agregarIden.setText("AGREGAR CONTACTO AL IDENTIFICADOR");
+        agregarIden.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarIdenMouseClicked(evt);
+            }
+        });
+        agregarIden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarIdenActionPerformed(evt);
+            }
+        });
+
+        guardarBD.setText("GUARDAR BD DE CONTACTOS");
+        guardarBD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardarBDMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,14 +96,20 @@ public class JFramePrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jButtonConsultar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(jButtonIngresar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(215, 215, 215)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jButtonConsultar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(agregarIden))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(guardarBD)))
                 .addContainerGap(124, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -89,7 +123,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 .addComponent(jButtonIngresar)
                 .addGap(29, 29, 29)
                 .addComponent(jButtonConsultar)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(agregarIden)
+                .addGap(18, 18, 18)
+                .addComponent(guardarBD)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,6 +152,27 @@ public class JFramePrincipal extends javax.swing.JFrame {
             Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonIngresarActionPerformed
+
+    private void agregarIdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarIdenActionPerformed
+
+    }//GEN-LAST:event_agregarIdenActionPerformed
+
+    private void guardarBDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBDMouseClicked
+        // TODO add your handling code here:
+        JFramePrincipal.contactos.guardarDatos();
+    }//GEN-LAST:event_guardarBDMouseClicked
+
+    private void agregarIdenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarIdenMouseClicked
+        // TODO add your handling code here:
+        String name = JOptionPane.showInputDialog("Ingrese en nombre del nuevo contacto");
+        int cel = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número del contacto"));
+        Contacto nuevo = new Contacto(cel,name);
+         try {
+             JFramePrincipal.identificador.agregarContacto(nuevo);
+         } catch (IOException ex) {
+             Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_agregarIdenMouseClicked
 
     /**
      * @param args the command line arguments
@@ -146,15 +205,23 @@ public class JFramePrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFramePrincipal().setVisible(true);
+                try {
+                    new JFramePrincipal().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton agregarIden;
+    private javax.swing.JButton guardarBD;
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+
+
 }

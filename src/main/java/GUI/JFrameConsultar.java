@@ -6,6 +6,10 @@ package GUI;
 
 import javax.swing.JOptionPane;
 import arbol.binario.listaligada.busqueda.avl.ArbolAVL;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sistema_contactos.contacto.Contacto;
 import sistema_contactos.BD_identificador.BD_identificador;
 import sistema_contactos.contacto.Contacto;
@@ -117,14 +121,25 @@ public class JFrameConsultar extends javax.swing.JFrame {
             //ventana que muestre un mensaje diciendo que no ha ingresado ningun numero
             JOptionPane.showMessageDialog(null, "No ha ingresado ningun numero");
         } else {
-            // mostrar en elJTextArea llamado "lista" la lista de contactos de "numero"
+            System.out.println(numero.getText());
+            ArrayList hijos = JFramePrincipal.contactos.contactos.hijosNodo(Integer.parseInt(numero.getText()));
+            if(!hijos.isEmpty()){
+                for(int i = 0; i < hijos.size(); i++) {
+                   lista.append(JFramePrincipal.identificador.buscarContacto((int)hijos.get(i)));
+                }
+            }
+            
         }
     }//GEN-LAST:event_botonVerActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFramePrincipal ventanaPrincipal = new JFramePrincipal();
-        ventanaPrincipal.setVisible(true);
-        dispose();
+        try {
+            JFramePrincipal ventanaPrincipal = new JFramePrincipal();
+            ventanaPrincipal.setVisible(true);
+            dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(JFrameConsultar.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
