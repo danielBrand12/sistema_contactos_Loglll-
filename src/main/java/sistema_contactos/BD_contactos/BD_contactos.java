@@ -30,7 +30,6 @@ public class BD_contactos {
                 //Arreglar esto
                 String[] info_contacto = scan.nextLine().split(":");
                 Contacto contacto = new Contacto(Integer.parseInt(info_contacto[0]),info_contacto[1]);
-                contactos.insertarDato(contacto);
             }
         }
     }
@@ -108,6 +107,6 @@ public class BD_contactos {
     }
     
     public void ingresarDato(int nivel, int celRaiz, int cel){
-        contactos.insertarDato(nivel, celRaiz, celRaiz);
+        contactos.insertarDato(nivel, celRaiz, cel);
     }
 }

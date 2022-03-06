@@ -1,10 +1,5 @@
-10000:daniel1
-20000:daniel2
-30046:daniel3
-30216:daniel4
-30146:daniel5
-36046:daniel6
-30046:daniel7
-90046:daniel7
-100046:daniel7
-95046:daniel9
+123:Maria
+456:Camila
+789:Sandra
+101112:Milena
+131415:Juan
