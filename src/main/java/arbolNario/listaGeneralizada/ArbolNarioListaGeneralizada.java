@@ -68,7 +68,7 @@ public class ArbolNarioListaGeneralizada {
         }
     }
     
-    public ArrayList<Integer> hijosNodo(int celContacto){
+    public ArrayList<Integer> hijosNodo(float celContacto){
         ArrayList<Integer> hijos = new ArrayList<>();
         NodoNario recorrido = buscarRaizMod(celContacto);
         
