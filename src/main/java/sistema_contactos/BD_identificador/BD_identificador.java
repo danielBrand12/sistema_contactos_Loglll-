@@ -26,7 +26,7 @@ public class BD_identificador {
         if(scan.hasNextLine()){
             while(scan.hasNextLine()){
                 String[] info_contacto = scan.nextLine().split(":");
-                Contacto contacto = new Contacto(Integer.parseInt(info_contacto[0]),info_contacto[1]);
+                Contacto contacto = new Contacto(Float.parseFloat(info_contacto[0]),info_contacto[1]);
                 identificador.insertarDato(contacto);
             }
         }

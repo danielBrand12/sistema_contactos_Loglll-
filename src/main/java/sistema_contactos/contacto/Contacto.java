@@ -8,8 +8,8 @@ package sistema_contactos.contacto;
  *
  * @author daniel
  */
-public class Contacto implements Comparable<Contacto>{
-    private final int celular;
+public class Contacto{
+    private final float celular;
     private final String nombre;
     
     public Contacto(int celular, String nombre){
@@ -17,7 +17,7 @@ public class Contacto implements Comparable<Contacto>{
         this.nombre = nombre;
     }
     
-    public int getCelular(){
+    public float getCelular(){
         return celular;
     }
     
@@ -25,8 +25,8 @@ public class Contacto implements Comparable<Contacto>{
         return nombre;
     }
 
-    @Override
-    public int compareTo(Contacto o) {
-        return this.celular - o.celular;
+    public float compareTo(Contacto o) {
+        float resultado = this.celular - o.celular;
+        return resultado;
     }
 }

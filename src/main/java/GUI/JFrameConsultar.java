@@ -121,8 +121,10 @@ public class JFrameConsultar extends javax.swing.JFrame {
             //ventana que muestre un mensaje diciendo que no ha ingresado ningun numero
             JOptionPane.showMessageDialog(null, "No ha ingresado ningun numero");
         } else {
-            System.out.println(numero.getText());
-            ArrayList hijos = JFramePrincipal.contactos.contactos.hijosNodo(Integer.parseInt(numero.getText()));
+            ArrayList hijos = null;
+            //hijos = JFramePrincipal.contactos.contactos.hijosNodo(Integer.parseInt(numero.getText()));
+            hijos.addAll(JFramePrincipal.contactos.contactos.hijosNodo(Integer.parseInt(numero.getText())));
+            
             if(!hijos.isEmpty()){
                 for(int i = 0; i < hijos.size(); i++) {
                    lista.append(JFramePrincipal.identificador.buscarContacto((int)hijos.get(i)));

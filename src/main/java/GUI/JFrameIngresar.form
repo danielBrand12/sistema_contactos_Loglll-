@@ -221,7 +221,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nivel del contacto al cual desea a&#xf1;adirle un nuevo contacto:"/>
+        <Property name="text" type="java.lang.String" value="Nivel del contacto que se va a ingresar:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nombreHijo">

@@ -86,7 +86,7 @@ public class ArbolNarioListaGeneralizada {
         return hijos;
     }
     
-    public void insertarDato(int nivel, int celContactoRaiz, int celContacto){
+    public void insertarDato(int nivel, float celContactoRaiz, float celContacto){
         switch (nivel) {
             case 1 -> insertarDatoNivel1(celContactoRaiz, celContacto);
             case 2 -> insertarDatoNivel2(celContactoRaiz, celContacto);                      
@@ -97,7 +97,7 @@ public class ArbolNarioListaGeneralizada {
         }
     }
     
-    public NodoNario buscarRaiz(int contactoRaiz){
+    public NodoNario buscarRaiz(float contactoRaiz){
         Stack stack = new Stack();
         NodoNario recorrido = raiz.getLiga();
         //NodoNario padreRaiz;
@@ -108,7 +108,7 @@ public class ArbolNarioListaGeneralizada {
                 if((int)recorrido.getDato() == contactoRaiz){
                     return recorrido;
                 }
-            }else if((int)recorrido.getDato() == contactoRaiz){
+            }else if((float)recorrido.getDato() == contactoRaiz){
                 return recorrido;
             } 
             if(recorrido.getLiga() == null && !stack.isEmpty()){
@@ -120,7 +120,7 @@ public class ArbolNarioListaGeneralizada {
         return null;
     }
     
-    public NodoNario buscarRaizMod(int contactoRaiz){
+    public NodoNario buscarRaizMod(float contactoRaiz){
         Stack stack = new Stack();
         NodoNario recorrido = raiz.getLiga();
         //NodoNario padreRaiz;
@@ -128,10 +128,10 @@ public class ArbolNarioListaGeneralizada {
             if(recorrido.getSw() == 1){
                 stack.push(recorrido);
                 recorrido = (NodoNario)recorrido.getDato();
-                if((int)recorrido.getDato() == contactoRaiz){
+                if((float)recorrido.getDato() == contactoRaiz){
                     return (NodoNario)stack.pop();
                 }
-            }else if((int)recorrido.getDato() == contactoRaiz){
+            }else if((float)recorrido.getDato() == contactoRaiz){
                 return recorrido;
             } 
             if(recorrido.getLiga() == null && !stack.isEmpty()){
@@ -143,7 +143,7 @@ public class ArbolNarioListaGeneralizada {
         return null;
     }
     
-    public int buscarNivel(int celContacto){
+    public int buscarNivel(float celContacto){
         Stack stack = new Stack();
         NodoNario recorrido = raiz.getLiga();
         int nivel = 1;
@@ -152,11 +152,11 @@ public class ArbolNarioListaGeneralizada {
             if(recorrido.getSw() == 1){
                 stack.push(recorrido);
                 recorrido = (NodoNario)recorrido.getDato();
-                if((int)recorrido.getDato() == celContacto){
+                if((float)recorrido.getDato() == celContacto){
                     return nivel;
                 }
                 nivel++;
-            }else if((int)recorrido.getDato() == celContacto && recorrido.getSw() == 0){
+            }else if((float)recorrido.getDato() == celContacto && recorrido.getSw() == 0){
                 return nivel;
             } 
             if(recorrido.getLiga() == null && !stack.isEmpty()){
@@ -169,7 +169,7 @@ public class ArbolNarioListaGeneralizada {
         return nivel;
     }
     
-    public void insertarDatoNivel1(int celContacto, int hijoContacto){
+    public void insertarDatoNivel1(float celContacto, float hijoContacto){
         NodoNario recorrido = raiz.getLiga();
         NodoNario dato = new NodoNario(celContacto);
         dato.setSw(0);
@@ -193,7 +193,7 @@ public class ArbolNarioListaGeneralizada {
         
     }
     
-    public void insertarDatoNivel2(int celContactoRaiz, int celContacto){
+    public void insertarDatoNivel2(float celContactoRaiz, float celContacto){
         int checkNivel = buscarNivel(celContactoRaiz);
         if(checkNivel == 0){
             JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en la base de datos.");
@@ -214,7 +214,7 @@ public class ArbolNarioListaGeneralizada {
         } 
     }
     
-    public void insertarDatoNivel3(int celContactoRaiz, int celContacto){
+    public void insertarDatoNivel3(float celContactoRaiz, float celContacto){
         int checkNivel = buscarNivel(celContactoRaiz);
         if(checkNivel == 0){
             JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en la base de datos.");
@@ -245,7 +245,7 @@ public class ArbolNarioListaGeneralizada {
             }
         }
     }
-    public void insertarDatoNivel4(int celContactoRaiz, int celContacto){
+    public void insertarDatoNivel4(float celContactoRaiz, float celContacto){
         int checkNivel = buscarNivel(celContactoRaiz);
         if(checkNivel == 0){
             JOptionPane.showMessageDialog(null, "El contacto " + celContactoRaiz + " no se encuentra en la base de datos.");

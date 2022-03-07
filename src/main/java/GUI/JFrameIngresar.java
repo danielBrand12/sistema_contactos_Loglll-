@@ -93,7 +93,7 @@ public class JFrameIngresar extends javax.swing.JFrame {
 
         jLabel6.setText("Información del contacto a ingresar:");
 
-        jLabel7.setText("Nivel del contacto al cual desea añadirle un nuevo contacto:");
+        jLabel7.setText("Nivel del contacto que se va a ingresar:");
 
         nombreHijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

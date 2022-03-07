@@ -32,12 +32,12 @@ public class BD_contactos {
                 if(Integer.parseInt(info_contacto[0]) == 1){
                     if(bandera != Integer.parseInt(info_contacto[1])){
                         bandera = Integer.parseInt(info_contacto[1]);
-                        contactos.insertarDato(Integer.parseInt(info_contacto[0]), Integer.parseInt(info_contacto[1]), Integer.parseInt(info_contacto[2]));
+                        contactos.insertarDato(Integer.parseInt(info_contacto[0]), Float.parseFloat(info_contacto[1]), Float.parseFloat(info_contacto[2]));
                     }else{
-                        contactos.insertarDato(Integer.parseInt(info_contacto[0]) + 1, Integer.parseInt(info_contacto[1]), Integer.parseInt(info_contacto[2]));
+                        contactos.insertarDato(Integer.parseInt(info_contacto[0]) + 1, Float.parseFloat(info_contacto[1]), Float.parseFloat(info_contacto[2]));
                     }
                 }else{
-                    contactos.insertarDato(Integer.parseInt(info_contacto[0]) + 1, Integer.parseInt(info_contacto[1]), Integer.parseInt(info_contacto[2]));
+                    contactos.insertarDato(Integer.parseInt(info_contacto[0]) + 1, Float.parseFloat(info_contacto[1]), Float.parseFloat(info_contacto[2]));
                 }
             }
         }
@@ -109,7 +109,7 @@ public class BD_contactos {
   
         // Escribimos en el txt
         try {
-            FileWriter myWriter = new FileWriter(System.getProperty("user.dir") + "contactos.txt");
+            FileWriter myWriter = new FileWriter("contactos.txt");
             myWriter.write(str.toString());
             myWriter.close();
         } catch (IOException e) {
@@ -117,7 +117,7 @@ public class BD_contactos {
         }
     }
     
-    public void ingresarDato(int nivel, int celRaiz, int cel){
+    public void ingresarDato(int nivel, float celRaiz, float cel){
         contactos.insertarDato(nivel, celRaiz, cel);
     }
 }
