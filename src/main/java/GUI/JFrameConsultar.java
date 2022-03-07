@@ -123,7 +123,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
         } else {
             ArrayList hijos = null;
             //hijos = JFramePrincipal.contactos.contactos.hijosNodo(Integer.parseInt(numero.getText()));
-            hijos.addAll(JFramePrincipal.contactos.contactos.hijosNodo(Integer.parseInt(numero.getText())));
+            //hijos.addAll(JFramePrincipal.contactos.contactos.hijosNodo(Integer.parseInt(numero.getText())));
             
             if(!hijos.isEmpty()){
                 for(int i = 0; i < hijos.size(); i++) {

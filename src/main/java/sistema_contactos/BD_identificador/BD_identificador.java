@@ -47,7 +47,7 @@ public class BD_identificador {
         }
     }
     
-    public String buscarContacto(int cel){
+    public String buscarContacto(float cel){
         String data;
         Contacto aux = new Contacto(cel,"");
         if(identificador.buscar(aux) != null){

@@ -12,7 +12,7 @@ public class Contacto implements Comparable<Contacto>{
     private final float celular;
     private final String nombre;
     
-    public Contacto(int celular, String nombre){
+    public Contacto(float celular, String nombre){
         this.celular = celular;
         this.nombre = nombre;
     }
@@ -26,8 +26,7 @@ public class Contacto implements Comparable<Contacto>{
     }
 
     @Override
-    public float compareTo(Contacto o) {
-        float resultado = this.celular - o.celular;
-        return resultado;
+    public int compareTo(Contacto o) {
+        return (int) (this.celular - o.celular);
     }
 }
